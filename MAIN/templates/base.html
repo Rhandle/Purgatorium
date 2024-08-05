@@ -1,0 +1,62 @@
+{% load static %}
+    
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purgatorium</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="{% static 'main.js' %}"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img alt="Logo" src="{% static 'favicon_black.png' %}" class="logo"></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'update_profile' %}">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'create_post' %}">Create a Post</a></li>
+            {% else %}
+            <li><a href="{% url 'signin' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Register</a></li>
+            {% endif %}
+        </ul>
+        <div class="search-box">
+            <div>
+                <select name="filters" id="" title="Filter Options">
+                    <option value="1">All</option>
+                    <option value="2">Title</option>
+                    <option value="3">Author</option>
+                    <option value="4">Content</option>
+                </select>
+                <input type="text" placeholder="Search" name="keywords" id="">
+                <button title="Search"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock content %}
+    <footer>
+        <div class="row">
+            <div class="forum-stats">
+                <div class="chart">
+                    Purgatorium Stats &nbsp;<i class="fa fa-bar-chart"></i>
+                </div>
+                <div>
+                    <span>Threads: 0</span>
+                    <span>Posts: 0</span>
+                    <span>Members: 0</span>
+                </div>
+            </div>
+                <div class="copyright">
+                    &copy; 2024 Purgatorium | All Rights Reserved
+                </div>
+                <div class="empty-space"></div>
+            </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="posts-nav">
+            <a href="{% url 'home' %}">Home</a> >> <a href="{{forum.get_url}}">{{forum.title}}</a>
+        </div>
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="subjects">Subjects</div>
+                <div class="replies">Replies</div>
+                <div class="last-reply">Last Reply</div>
+            </div>
+        </div>
+        {% for post in posts %}
+        <div class="table-row">
+            <div class="subjects">
+                <h1><a href="{{post.get_url}}">{{post.title}}</a></h1>
+                <span>Started by <b><a href="">{{post.user.fullname|title}}</a></b></span>
+            </div>
+            <div class="replies">{{post.num_comments}} Replies | Views: {% get_hit_count for post %}</div>
+            <div class="last-reply">
+                {{post.last_reply.date|date}}<br>
+                By <b><a href="">{{post.last_reply.user|title}}</a></b>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!--Page Numbers-->
+
+        <div class="pagination">
+            Pages: 
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#">&raquo;</a>
+        </div>
+
+        <!--Status Note-->
+        <div class="note">
+            <span>
+                <i class="fa fa-fire"></i>&nbsp; Open Topic <br>
+            </span>
+            <span>
+                <i class="fa fa-lock"></i>&nbsp; Closed Topic
+            </span>
+        </div>
+    </div>
+{% endblock content %}

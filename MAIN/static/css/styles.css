@@ -1,0 +1,299 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+/* nav */
+nav {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(92, 0, 0);
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  float: left;
+}
+nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+nav ul li a:hover {
+  background-color: white;
+  color: rgb(92, 0, 0);
+  transition: cubic-bezier(1, 1, 1, 1) 1s;
+}
+nav ul li .logo {
+  display: block;
+  width: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.search-box {
+  margin-right: 1rem;
+}
+.search-box select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+.search-box input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+.search-box button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+.search-box button:hover {
+  background-color: white;
+  color: rgb(92, 0, 0);
+  transition: cubic-bezier(1, 1, 1, 1) 1s;
+}
+
+/* Index */
+.main-logo {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.subforum {
+  margin-top: 1rem;
+}
+
+.subforum-title {
+  background-color: rgb(52, 0, 0);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.3rem;
+}
+
+.subforum-row {
+  display: grid;
+  grid-template-columns: 70% 15% 15%;
+}
+
+.subforum-column {
+  padding: 1rem;
+  margin: 0.4rem;
+  border-radius: 0.4rem;
+  background-color: rgb(30, 30, 30);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subforum-icon i {
+  font-size: 5rem;
+}
+
+/* footer */
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(25, 25, 25);
+  padding: 1rem;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+}
+footer .row {
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+}
+footer .row .forum-stats {
+  text-align: left;
+  margin-left: 1rem;
+}
+footer .row .copyright {
+  padding: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+/* --------------------------- */
+/* Post */
+.table-head {
+  display: flex;
+}
+.table-head div {
+  padding: 0.5rem;
+  margin: 0.2rem;
+  background-color: rgb(52, 0, 0);
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+.table-head .status {
+  flex: 5%;
+}
+.table-head .subjects {
+  flex: 70%;
+}
+.table-head .replies {
+  flex: 10%;
+}
+.table-head .last-reply {
+  flex: 15%;
+}
+
+.table-row {
+  display: flex;
+}
+.table-row .status, .table-row .subjects, .table-row .replies, .table-row .last-reply {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  background-color: rgb(31, 31, 31);
+}
+.table-row .status {
+  flex: 5%;
+  font-size: 3rem;
+  text-align: center;
+}
+.table-row .subjects {
+  flex: 70%;
+}
+.table-row .replies {
+  flex: 10%;
+}
+.table-row .last-reply {
+  flex: 15%;
+}
+
+/* Page numbers */
+.pagination {
+  padding: 2rem;
+  font-size: 1rem;
+}
+.pagination a {
+  margin-inline: 0.5rem;
+}
+
+/* Post Navigation */
+.posts-nav {
+  margin-block: 1rem;
+  font-weight: lighter;
+}
+
+/* --------------------------- */
+/* forum.html */
+.head {
+  display: flex;
+  background-color: rgb(52, 0, 0);
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+.authors {
+  flex: 20%;
+}
+
+.content {
+  flex: 80%;
+  height: 100%;
+}
+
+.body {
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  background-color: rgb(31, 31, 31);
+  margin-top: 0.2rem;
+  border-radius: 0.5rem;
+}
+.body .authors img {
+  max-width: 10rem;
+  max-height: 20rem;
+}
+.body .content .comment button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  cursor: pointer;
+  float: right;
+  bottom: 0;
+}
+
+.comment-area {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.comment-area textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(30, 30, 30);
+  margin-block: 1rem;
+  color: white;
+  min-height: 10rem;
+}
+
+.comment-area input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  float: right;
+}
+
+.comments-container {
+  margin-top: 1rem;
+}/*# sourceMappingURL=styles.css.map */

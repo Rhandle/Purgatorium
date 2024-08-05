@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="main-logo">
+        <img alt="Logo" src="{% static 'logo.png' %}" width="300rem">
+    </div>
+    <div class="container">
+        <div class="subforum">
+            <div class="subforum-title">
+                <h1>Welcome to Purgatory</h1>
+            </div>
+            {% for forum in forums %}
+            <div class="subforum-row">
+                <div class="subforum-content subforum-column">
+                    <h1><a href="{{forum.get_url}}">{{forum.title}}</a></h1>
+                    <p>{{forum.description}}</p>
+                </div>
+                <div class="subforum-stats subforum-column center">
+                    <span>Threads: {{forum.num_posts}}</span>
+                </div>
+                <div class="subforum-info subforum-column">
+                    <b><a href="{{forum.last_post.get_url}}">Last Post</a> by <a href="">{{forum.last_post.user.fullname|title}}</a></b>
+                    <br>
+                    on <small>{{forum.last_post.date|date}}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

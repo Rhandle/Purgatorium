@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% load hitcount_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="posts-nav">
+            <a href="index.html">Home</a> >> <a href="{{post.categories.all.0.get_url}}">{{post.categories.all.0.title}}</a> >> <a href="{{post.get_url}}">{{post.title}}</a>
+        </div>
+        
+        <div class="topic-container">
+            <div class="head">
+                <div class="authors">Author</div>
+                <div class="content">{{post.title}} | Views: {% get_hit_count for post %}</div>
+            </div>
+
+            <div class="body">
+                <div class="authors">
+                    <img src="{{post.user.profile_picture.url}}" alt="">
+                    
+                        <div class="username"><a href="">{{post.user.fullname|title}}</a></div>
+                        <div>Admin</div>
+                        <span>{{post.date|date}}</span>
+                        <div>Posts: <u>{{post.user.num_posts}}</u></div>
+                        <div>Reputation: <u>{{post.user.points}}</u></div>
+                    
+                </div>
+                <div class="content">
+                    {{post.content|safe}}
+                    <div class="comment">
+                        <button onclick="showComment()">Comment</button>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        <!-- Comment Input -->
+        <div class="comment-area hide" id="comment-area">
+            <textarea name="comment" id="" placeholder="Write a comment"></textarea>
+            <input type="submit" name="" id="" value="Submit">
+        </div>
+        {% for comment in post.comments.all %}
+        <div class="comments-container">
+            <div class="head">
+                <div class="authors">Author</div>
+                <div class="content">Comments</div>
+            </div>
+    
+            <div class="body">
+                <div class="authors">
+                    <img src="{{comment.user.profile_picture.url}}" alt="Avatar">
+                    <div>
+                        <div class="commenter-username"><a href="">{{comment.user.fullname|title}}</a></div>
+                        <div>User</div>
+                        <span>{{comment.date|date}}</span>
+                        <div>Posts: <u>{{comment.user.num_posts}}</u></div>
+                        <div>Reputation: <u>{{comment.user.points}}</u></div>
+                    </div>
+                </div>
+                <div class="content">
+                    {{comment.content|safe}}
+                    <div class="comment">
+                        <button onclick="showReply()">Reply</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Comment Input -->
+            <div class="comment-area hide" id="reply-area">
+                <textarea name="comment" id="" placeholder="Write a reply"></textarea>
+                <input type="submit" name="" id="" value="Submit">
+            </div>
+        </div>         
+        {% for reply in comment.replies.all %}
+        <div class="comments-container" style="width: 95%; margin-left:5%;">
+    
+            <div class="body">
+                <div class="authors">
+                    <img src="{{reply.user.profile_picture.url}}" alt="Avatar">
+                    <div>
+                        <div class="commenter-username"><a href="">{{reply.user.fullname|title}}</a></div>
+                        <div>User</div>
+                        <span>{{reply.date|date}}</span>
+                        <div>Posts: <u>{{reply.user.num_posts}}</u></div>
+                        <div>Reputation: <u>{{reply.user.points}}</u></div>
+                    </div>
+                </div>
+            </div>
+        </div>         
+        {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock content %}
